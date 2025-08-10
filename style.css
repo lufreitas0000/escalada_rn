@@ -127,3 +127,108 @@ main section {
     border-top: 1px solid var(--border);
     margin-top: var(--spacing-xxl);
 }
+
+
+/* 6. COMPONENT: GRADE CONVERTER */
+.grade-converter-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-lg) 0;
+}
+
+.grade-converter-controls button {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.grade-converter-controls button:hover {
+    background-color: oklch(from var(--border) calc(l - 0.05) c h);
+}
+
+.grade-converter-controls button.active {
+    background-color: var(--primary-accent);
+    color: var(--surface);
+    border-color: var(--primary-accent);
+}
+
+
+/* 7. COMPONENT: PHOTO GALLERY & MODAL */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.photo-gallery img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.03);
+    opacity: 0.85;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: oklch(from var(--text-primary) l c h / 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Impede cliques quando invisível */
+}
+
+.modal-content {
+    display: block;
+    max-width: 50vw;   /* Ocupa 50% da largura da tela, como solicitado */
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px oklch(from var(--text-primary) l c h / 0.4);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.hidden .modal-content {
+    transform: scale(0.9);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-xl);
+    font-size: 3rem;
+    color: var(--surface);
+    cursor: pointer;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+}
+
+.modal-close:hover {
+    opacity: 0.7;
+}

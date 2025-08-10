@@ -19,6 +19,13 @@ escalada-rn/
 ├── index.html
 ├── style.css
 ├── script.js
+└── js/
+    ├── main.js
+    ├── core/
+    │   └── gradeConverter.js
+    └── ui/
+        ├── gallery.js
+        └── sidebar.js
 ├── assets/
 │   ├── images/
 │   ├── icons/
