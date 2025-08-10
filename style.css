@@ -1,0 +1,129 @@
+/* 1. CSS RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%; /* 16px */
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+/* 2. DESIGN TOKENS */
+:root {
+    /* Color Palette (Light Theme) */
+    --surface: oklch(98% 0.01 90);
+    --surface-card: oklch(100% 0 0);
+    --text-primary: oklch(35% 0.02 80);
+    --text-secondary: oklch(55% 0.02 80);
+    --primary-accent: oklch(60% 0.15 40);
+    --border: oklch(90% 0.015 90);
+
+    /* Typography */
+    --font-display: 'Work Sans', sans-serif;
+    --font-body: 'Noto Sans', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+    /* Spacing Scale (8px base) */
+    --spacing-xs: 0.25rem;  /* 4px */
+    --spacing-sm: 0.5rem;   /* 8px */
+    --spacing-md: 1rem;     /* 16px */
+    --spacing-lg: 1.5rem;   /* 24px */
+    --spacing-xl: 2rem;     /* 32px */
+    --spacing-xxl: 4rem;    /* 64px */
+}
+
+/* 3. GLOBAL STYLES */
+body {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 4. TYPOGRAPHY STYLES */
+h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+.site-title {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+    font-weight: 800;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    margin-bottom: var(--spacing-md);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.2s ease;
+}
+
+a:hover, a:focus-visible {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+
+/* 5. LAYOUT & COMPONENT STYLES (Placeholders) */
+
+/* Header */
+.main-header {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+}
+
+/* Main Content Sections */
+main section {
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+}
+
+/* Regions Grid */
+.regions-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    /* A regra de colunas responsivas será adicionada aqui */
+}
+
+/* Footer */
+.main-footer {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: var(--spacing-xxl);
+}
