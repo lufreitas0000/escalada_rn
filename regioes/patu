@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patu - Guia de Escalada RN</title>
+    <link rel="stylesheet" href="../style.css"> </head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1 class="site-title">Patu</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="region-overview">
+                <p class="section-intro">
+                    Patu é o berço da escalada tradicional no estado, famosa por suas longas vias em fendas e diedros no imponente "Pico do Pelado". A região também possui um vasto potencial para boulder em arenito.
+                </p>
+            </section>
+
+            <section id="sectors">
+                <h2 class="section-title">Setores de Escalada</h2>
+                <div class="content-grid">
+                    <a href="../setores/diedro.html" class="content-card">
+                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor Diedro">
+                        <div class="card-content">
+                            <h3>Diedro</h3>
+                            <p>O setor mais icônico, casa da via "Diedro dos Solanos", um clássico da escalada potiguar.</p>
+                            <span class="card-link">Ver Vias →</span>
+                        </div>
+                    </a>
+
+                    <a href="../setores/pelado.html" class="content-card">
+                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor Pelado">
+                        <div class="card-content">
+                            <h3>Pico do Pelado</h3>
+                            <p>Vias de múltiplas esticadas que levam ao cume da serra, com um visual incrível.</p>
+                            <span class="card-link">Ver Vias →</span>
+                        </div>
+                    </a>
+
+                    <a href="../setores/bloco-paquera.html" class="content-card">
+                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor Bloco da Paquera">
+                        <div class="card-content">
+                            <h3>Bloco da Paquera</h3>
+                            <p>Uma das principais áreas de boulder, com problemas clássicos e de alta dificuldade.</p>
+                            <span class="card-link">Ver Boulders →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Guia de Escalada RN. Desenvolvido pela comunidade.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js" type="module" defer></script>
+</body>
+</html>
