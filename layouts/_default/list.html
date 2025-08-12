@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serra Caiada - Guia de Escalada RN</title>
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -12,66 +12,68 @@
 
     <header class="main-header">
         <div class="container">
-            <h1 class="site-title">Serra Caiada</h1>
+            <a href="{{ .Site.BaseURL }}" class="back-to-home">&larr; Voltar para o início</a>
+            <h1 class="site-title">{{ .Title }}</h1>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <section id="region-overview">
-                <p class="section-intro">
-                    Considerada o principal destino de escalada esportiva do Rio Grande do Norte, Serra Caiada é
-                    conhecida por suas imponentes paredes de rocha quartzítica e grande variedade de vias para todos os
-                    níveis.
-                </p>
+            <section id="list-overview">
+                <div class="section-intro">
+                    {{ .Content }}
+                </div>
             </section>
 
-            <section id="sectors">
-                <h2 class="section-title">Setores de Escalada</h2>
-                <div class="content-grid">
-                    <a href="../setores/face-leste.html" class="content-card">
-                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor Face Leste">
-                        <div class="card-content">
-                            <h3>Face Leste</h3>
-                            <p>O setor mais tradicional, com vias longas e técnicas que exigem resistência.</p>
-                            <span class="card-link">Ver Vias →</span>
-                        </div>
-                    </a>
+            <section id="list-items">
+                <h2 class="section-title">{{ .Params.list_title | default "Itens" }}</h2>
 
-                    <a href="../setores/falesias.html" class="content-card">
-                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor Falésias">
-                        <div class="card-content">
-                            <h3>Falésias</h3>
-                            <p>Vias mais curtas e de alta intensidade, ideal para quem busca projetos difíceis.</p>
-                            <span class="card-link">Ver Vias →</span>
+                {{ if eq .Type "vias" }}
+                <div class="routes-table">
+                    <div class="table-header">
+                        <div>Nome da Via</div>
+                        <div>Graduação</div>
+                        <div>Extensão</div>
+                        <div>Class.</div>
+                    </div>
+                    {{ range .Pages }}
+                    <a href="{{ .RelPermalink }}" class="table-row">
+                        <div>{{ .Title }}</div>
+                        <div><strong class="grade-value" data-original-grade="{{ .Params.grade }}">{{ .Params.grade
+                                }}</strong></div>
+                        <div>{{ .Params.length | default "--" }}</div>
+                        <div class="stars-rating-list">
+                            {{ if isset .Params "stars" }}{{ .Params.stars }}★{{ end }}
                         </div>
                     </a>
-
-                    <a href="../setores/caverninha.html" class="content-card">
-                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor Caverninha">
-                        <div class="card-content">
-                            <h3>Caverninha</h3>
-                            <p>Um setor com vias negativas e de teto, perfeito para treinar força e potência.</p>
-                            <span class="card-link">Ver Vias →</span>
-                        </div>
-                    </a>
-
-                    <a href="../setores/boulder-principal.html" class="content-card">
-                        <img src="../assets/images/placeholder-setor.jpg" alt="Setor de Boulder">
-                        <div class="card-content">
-                            <h3>Boulder Principal</h3>
-                            <p>A principal área de boulder, com dezenas de problemas em rocha de alta qualidade.</p>
-                            <span class="card-link">Ver Boulders →</span>
-                        </div>
-                    </a>
+                    {{ end }}
                 </div>
+                {{ else }}
+                <div class="content-grid">
+                    {{ range .Pages }}
+                    <a href="{{ .RelPermalink }}" class="content-card">
+                        {{ with .Params.cover_image }}
+                        <img src="{{ . }}" alt="Foto de {{ $.Title }}">
+                        {{ else }}
+                        <img src="/assets/images/placeholder-setor.jpg" alt="Imagem padrão">
+                        {{ end }}
+                        <div class="card-content">
+                            <h3>{{ .Title }}</h3>
+                            <p>{{ .Params.summary | truncate 100 }}</p>
+                            <span class="card-link">Ver Detalhes →</span>
+                        </div>
+                    </a>
+                    {{ end }}
+                </div>
+                {{ end }}
+
             </section>
         </div>
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Guia de Escalada RN. Desenvolvido pela comunidade.</p>
+            <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Desenvolvido pela comunidade.</p>
         </div>
     </footer>
 

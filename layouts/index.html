@@ -4,25 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Escalada RN</title>
+    <title>{{ .Site.Title }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Noto+Sans:wght@400;700&family=Work+Sans:wght@700;800&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="/style.css">
-
 </head>
 
 <body>
 
     <header class="main-header">
         <div class="container">
-            <h1 class="site-title">Guia de Escalada do Rio Grande do Norte</h1>
-            <nav class="main-nav">
-            </nav>
+            <h1 class="site-title">{{ .Site.Title }}</h1>
+            <p class="section-intro">{{ .Site.Params.description }}</p>
         </div>
     </header>
 
@@ -30,26 +27,22 @@
         <div class="container">
             <section id="overview">
                 <h2 class="section-title">As Regiões de Escalada</h2>
-                <p class="section-intro">Explore os principais picos de escalada do estado, desde as falésias de Serra
-                    Caiada até os boulders de Patu.</p>
-                <div class="regions-grid">
-                    <a href="regioes/serra-caiada.html" class="region-card">
-                        <img src="assets/images/serra-caiada-cover.jpg" alt="Foto da Serra Caiada">
-                        <div class="card-content">
-                            <h3>Serra Caiada</h3>
-                            <p>A capital da escalada potiguar, com centenas de vias esportivas e boulders.</p>
-                            <span class="card-link">Explorar →</span>
-                        </div>
-                    </a>
 
-                    <a href="regioes/patu.html" class="region-card">
-                        <img src="assets/images/patu-cover.jpg" alt="Foto da Serra do Patu">
+                <div class="content-grid">
+                    {{ range .Site.GetPage "regioes" .Pages }}
+                    <a href="{{ .RelPermalink }}" class="content-card">
+                        {{ with .Params.cover_image }}
+                        <img src="{{ . }}" alt="Foto da região de {{ $.Title }}">
+                        {{ else }}
+                        <img src="/assets/images/placeholder-setor.jpg" alt="Imagem padrão">
+                        {{ end }}
                         <div class="card-content">
-                            <h3>Patu</h3>
-                            <p>Escalada tradicional de qualidade e um campo de boulders de arenito único.</p>
+                            <h3>{{ .Title }}</h3>
+                            <p>{{ .Params.summary | truncate 100 }}</p>
                             <span class="card-link">Explorar →</span>
                         </div>
                     </a>
+                    {{ end }}
                 </div>
             </section>
         </div>
@@ -57,12 +50,11 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Guia de Escalada RN. Desenvolvido pela comunidade.</p>
+            <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Desenvolvido pela comunidade.</p>
         </div>
     </footer>
 
-    <script src="js/main.js" type="module" defer></script>
-
+    <script src="/js/main.js" type="module" defer></script>
 </body>
 
 </html>
